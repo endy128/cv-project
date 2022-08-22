@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
 
-class renderContact extends Component {
-render () {
+const ContactForm = (props) => {
+  const {fullName, email, phone, handleOnChange, onSubmitContact} = props;
+
   return (
     <div className="contactForm">
-    <form onSubmit={this.onSubmitGeneral}>
-      <label htmlFor="name">Name:</label>
+    <form onSubmit={onSubmitContact}>
+      <label htmlFor="fullName">Name:</label>
         <input
-          onChange={this.handleOnChange}
-          value={name}
+          onChange={handleOnChange}
+          value={fullName}
           type="text"
-          name="name"
+          name="fullName"
         />
       <label htmlFor="email">Email:</label>
         <input
-          onChange={this.handleOnChange}
+          onChange={handleOnChange}
           value={email}
           type="email"
           name="email"
         />
       <label htmlFor="phone">Phone:</label>
         <input
-          onChange={this.handleOnChange}
+          onChange={handleOnChange}
           value={phone}
           type="tel"
           name="phone"
@@ -34,7 +34,7 @@ render () {
     </form>
   </div>
   )
-}
+
 }
 
-export default renderContact
+export default ContactForm

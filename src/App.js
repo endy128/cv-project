@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import uniqid from "uniqid";
-import renderContact from "./components/Contact";
-import Contact from "./components/Contact";
+import ContactForm from "./components/ContactForm";
+import ContactInfo from "./components/ContactInfo";
 
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
 
     this.state = {
         id: uniqid(),
-        name: '',
+        fullName: '',
         email: '',
         phone: '',
         school: '',
@@ -21,6 +21,7 @@ class App extends Component {
         tasks: '',
         startDate: '',
         endDate: '',
+        contactSaved: false,
     };
   }
 
@@ -30,51 +31,42 @@ class App extends Component {
     });
   };
 
-  onSubmitGeneral = (e) => {
+  onSubmitContact = (e) => {
     e.preventDefault();
     this.setState({
-          id: uniqid(),
-          name: '',
-          email: '',
-          phone: '',
+          id: uniqid()
     });
-    console.table(this.state);
-    renderContact(this.state);
+    this.setState({
+      contactSaved: true
+    })
   };
 
-  render () {
-    const { name, email, phone } = this.state;
+  RenderContact = () => {
+    const { fullName, email, phone, contactSaved } = this.state;
+    if (contactSaved === true) {
+      return (
+        <ContactInfo
+        fullName={fullName} 
+        email={email} 
+        phone={phone} 
+        />
+      )
+    }
     return (
-      <div className="contactForm">
-        <form onSubmit={this.onSubmitGeneral}>
-          <label htmlFor="name">Name:</label>
-            <input
-              onChange={this.handleOnChange}
-              value={name}
-              type="text"
-              name="name"
-            />
-          <label htmlFor="email">Email:</label>
-            <input
-              onChange={this.handleOnChange}
-              value={email}
-              type="email"
-              name="email"
-            />
-          <label htmlFor="phone">Phone:</label>
-            <input
-              onChange={this.handleOnChange}
-              value={phone}
-              type="tel"
-              name="phone"
-            />
+      <ContactForm 
+      fullName={fullName} 
+      email={email} 
+      phone={phone} 
+      handleOnChange={this.handleOnChange} 
+      onSubmitContact={this.onSubmitContact} 
+      />
+    )
+  }
 
-          <div className="buttons">
-            <button type="button">Edit</button>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
+  render () {
+    // const { fullName, email, phone } = this.state;
+    return (
+      <this.RenderContact />
     )
   }
 

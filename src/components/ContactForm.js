@@ -1,10 +1,12 @@
 
 const ContactForm = (props) => {
-  const {fullName, email, phone, handleOnChange, onSubmitContact} = props;
+  const {fullName, email, phone, handleOnChange, onSubmit} = props;
 
   return (
     <div className="contactForm">
-    <form onSubmit={onSubmitContact}>
+    <form 
+      onSubmit={onSubmit} 
+      name="contactSaved">
       <label htmlFor="fullName">Name:</label>
         <input
           onChange={handleOnChange}
@@ -26,15 +28,12 @@ const ContactForm = (props) => {
           type="tel"
           name="phone"
         />
-
       <div className="buttons">
-        <button type="button">Edit</button>
         <button type="submit">Submit</button>
       </div>
     </form>
   </div>
   )
-
 }
 
 export default ContactForm

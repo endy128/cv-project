@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import uniqid from "uniqid";
 import ContactForm from "./components/ContactForm";
 import ContactInfo from "./components/ContactInfo";
+import EduForm from "./components/EduForm";
+import EduInfo from "./components/EduInfo";
 
 
 class App extends Component {
@@ -22,6 +24,8 @@ class App extends Component {
         startDate: '',
         endDate: '',
         contactSaved: false,
+        eduSaved: false,
+        workSaved: false,
     };
   }
 
@@ -31,43 +35,80 @@ class App extends Component {
     });
   };
 
-  onSubmitContact = (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
+    // this.setState({
+    //       id: uniqid()
+    // });
     this.setState({
-          id: uniqid()
-    });
-    this.setState({
-      contactSaved: true
+      [e.target.name]: true
     })
   };
 
-  RenderContact = () => {
-    const { fullName, email, phone, contactSaved } = this.state;
+  handleEdit = (e) => {
+    this.setState({
+      [e.target.name]: false
+    })
+  }
+
+  renderContact = () => {
+    const {fullName, email, phone, contactSaved} = this.state;
+    let textToRender = '';
     if (contactSaved === true) {
-      return (
-        <ContactInfo
-        fullName={fullName} 
-        email={email} 
-        phone={phone} 
-        />
-      )
-    }
-    return (
+      textToRender = 
+      <ContactInfo
+      fullName={fullName} 
+      email={email} 
+      phone={phone} 
+      handleEdit={this.handleEdit}
+      />
+    } else if (contactSaved === false) {
+      textToRender = 
       <ContactForm 
       fullName={fullName} 
       email={email} 
       phone={phone} 
       handleOnChange={this.handleOnChange} 
-      onSubmitContact={this.onSubmitContact} 
+      onSubmit={this.onSubmit} 
       />
-    )
+    } 
+    return textToRender;
+  }
+
+  renderEdu = () => {
+    const {school, course, graduation, eduSaved} = this.state;
+    let textToRender = '';
+  
+    if (eduSaved === true) {
+      textToRender =
+      <EduInfo
+      school={school}
+      course={course}
+      graduation={graduation}
+      handleOnChange={this.handleOnChange} 
+      handleEdit={this.handleEdit}
+      />
+    } else if ( eduSaved === false) {
+      textToRender =
+      <EduForm
+      school={school}
+      course={course}
+      graduation={graduation}
+      handleOnChange={this.handleOnChange} 
+      onSubmit={this.onSubmit} 
+      />
+    }
+    return textToRender;
   }
 
   render () {
-    // const { fullName, email, phone } = this.state;
     return (
-      <this.RenderContact />
-    )
+      <div>
+        {this.renderContact()}
+        {this.renderEdu()}
+      </div>
+      )
+
   }
 
 }

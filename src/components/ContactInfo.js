@@ -1,10 +1,10 @@
 const ContactInfo = (props) => {
   const {fullName, email, phone, handleEdit} = props;
   return ( 
-    <div className="contactInfo">
-      <div className="fullName">Name: {fullName}</div>
-      <div className="email">Email: {email}</div>
-      <div className="phone">Phone: {phone}</div>
+    <div className="contactInfo info">
+      <div className="fullName"><p>Name:</p>{fullName}</div>
+      <div className="email"><p>Email:</p>{email}</div>
+      <div className="phone"><p>Phone:</p>{phone}</div>
       <div className="buttons">
         <button
           className="editButton"

@@ -1,10 +1,10 @@
 const EduInfo = (props) => {
   const {school, course, graduation, handleEdit} = props;
   return ( 
-    <div className="eduInfo">
-      <div className="school">School: {school}</div>
-      <div className="course">Course: {course}</div>
-      <div className="graduation">Graduaution Date: {graduation}</div>
+    <div className="eduInfo info">
+      <div className="school"><p>School:</p>{school}</div>
+      <div className="course"><p>Course:</p>{course}</div>
+      <div className="graduation"><p>Graduaution Date:</p>{graduation}</div>
       <div className="buttons">
         <button
           className="editButton"

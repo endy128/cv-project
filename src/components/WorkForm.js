@@ -8,21 +8,21 @@ const WorkForm = (props) => {
       <form 
       onSubmit={onSubmit}
       name="workSaved">
-      <label htmlFor="company">company:</label>
+      <label htmlFor="company">Company:</label>
         <input
           onChange={handleOnChange}
           value={company}
           type="text"
           name="company"
         />
-        <label htmlFor="title">title:</label>
+        <label htmlFor="title">Title:</label>
         <input
           onChange={handleOnChange}
           value={title}
           type="text"
           name="title"
         />      
-        <label htmlFor="tasks">tasks:</label>
+        <label htmlFor="tasks">Tasks:</label>
         <textarea
           onChange={handleOnChange}
           value={tasks}

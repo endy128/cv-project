@@ -1,18 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 
-*, 
-::before, 
-::after{
+*,
+::before,
+::after {
   margin: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
-/* height: 100%; */
-background-image: linear-gradient(to right, hsl(0, 0%, 70%), hsl(0, 0%, 25%));
-font-family: 'Titillium Web', sans-serif;
-padding-top: 1em;
+  /* height: 100%; */
+  background-image: linear-gradient(to right, hsl(0, 0%, 70%), hsl(0, 0%, 25%));
+  font-family: 'Titillium Web', sans-serif;
+  padding-top: 1em;
 }
 
 #root {
@@ -29,7 +29,7 @@ padding-top: 1em;
   width: 100%;
   /* padding: 1em 1em 0 1em; */
   padding: 10px;
-  border: 1px solid  hsla(0, 0%, 0%, 0.5);
+  border: 1px solid hsla(0, 0%, 0%, 0.5);
   border-radius: 5px;
   background-color: hsla(0, 0%, 0%, 0.4);
   margin-bottom: 10px;
@@ -59,7 +59,6 @@ label {
   display: flex;
   justify-content: space-around;
   margin-top: auto;
-
 }
 
 button {
@@ -83,7 +82,6 @@ button:hover {
   color: white;
   /* min-width: 634px; */
   font-size: 1.5rem;
-
 }
 .info p {
   font-size: 1rem;

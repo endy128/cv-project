@@ -4,6 +4,8 @@ import ContactForm from "./components/ContactForm";
 import ContactInfo from "./components/ContactInfo";
 import EduForm from "./components/EduForm";
 import EduInfo from "./components/EduInfo";
+import WorkForm from "./components/WorkForm";
+import WorkInfo from "./components/WorkInfo";
 
 
 class App extends Component {
@@ -11,7 +13,7 @@ class App extends Component {
     super();
 
     this.state = {
-        id: uniqid(),
+        // id: uniqid(),
         fullName: '',
         email: '',
         phone: '',
@@ -101,11 +103,42 @@ class App extends Component {
     return textToRender;
   }
 
+  renderWork = () => {
+    const {company, title, tasks, startDate, endDate, workSaved} = this.state;
+    let textToRender = '';
+  
+    if (workSaved === true) {
+      textToRender =
+      <WorkInfo
+      company={company}
+      title={title}
+      tasks={tasks}
+      startDate={startDate}
+      endDate={endDate}
+      handleOnChange={this.handleOnChange} 
+      handleEdit={this.handleEdit}
+      />
+    } else if ( workSaved === false) {
+      textToRender =
+      <WorkForm
+      company={company}
+      title={title}
+      tasks={tasks}
+      startDate={startDate}
+      endDate={endDate}
+      handleOnChange={this.handleOnChange} 
+      onSubmit={this.onSubmit} 
+      />
+    }
+    return textToRender;
+  }
+
   render () {
     return (
       <div>
         {this.renderContact()}
         {this.renderEdu()}
+        {this.renderWork()}
       </div>
       )
 

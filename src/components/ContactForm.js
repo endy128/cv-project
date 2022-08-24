@@ -29,7 +29,7 @@ const ContactForm = (props) => {
           name="phone"
         />
       <div className="buttons">
-        <button type="submit">Submit</button>
+        <button type="submit">Save</button>
       </div>
     </form>
   </div>

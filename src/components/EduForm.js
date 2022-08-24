@@ -30,7 +30,7 @@ const EduForm = (props) => {
           name="graduation"
         />
         <div className="buttons">
-          <button type="submit">Submit</button>
+          <button type="submit">Save</button>
         </div>
       </form>
     </div>
